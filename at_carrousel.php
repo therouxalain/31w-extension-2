@@ -1,5 +1,8 @@
 <?php
 
+//////////////////////////////////// IMPORTANT DE NOTER QUE LES COMMITS SONT RÉPARTIS SUR 2 REP GIT (voir URI ↓)
+// dont le main de https://github.com/therouxalain/31w-extension/tree/tp1 (ce qui fait 3 endroits, désolé!)
+
 /**
  * @package              at_Carrousel
  * @author               Alain Théroux
@@ -9,7 +12,7 @@
  * @wordpress-plugin
  * 
  * Plugin Name:          at_carrousel
- * Plugin URI:           https://github.com/therouxalain/31w_alain/tree/exer1 & https://github.com/therouxalain/31w-extension-2
+ * Plugin URI:           https://github.com/therouxalain/31w-extension/tree/tp1 & https://github.com/therouxalain/31w-extension-2
  * Description:         Permet d'afficher une boîte modale de l'image sélectionnée d'une galerie. Pour ensuite accéder à toutes les images de la galerie
  * Author:               Alain Théroux
  * Author URI:           https://github.com/therouxalain/
@@ -50,13 +53,14 @@ function boite_carrousel()
 {
     // Le conteneur d'une boîte (HTML)
 
-    $contenu =
-        "<button class='monBouton'>Ouvrir carrousel</button>"
-        . "<div class='carrousel'>"
-        . '<button class="carrousel__x">X<button>'
-        . '<figure class="carrousel__figure"></figure>'
-        . '<form class="carrousel__form"></form>'   //Ceci inègre du contenur dans la boite
+        $contenu =
+        "<button class='monBouton'>Ouvrir carrousel</button>" //Bouton d'ouverture
+        ."<div class='carrousel'>"
+        . '<button class="carrousel__x">X<button>'              //Bouton de fermeture
+        . '<figure class="carrousel__figure"></figure>'         //Conteneur d'images
+        . '<form class="carrousel__form"></form>'               //Ceci intègre du contenu dans la boite
         . '</div> <!-- fin class="carrousel" -->';
     return $contenu;
+
 }
 add_shortcode('at_carrousel', 'boite_carrousel');
