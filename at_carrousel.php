@@ -57,8 +57,8 @@ function boite_carrousel()
         "<button class='monBouton'>Ouvrir carrousel</button>" //Bouton d'ouverture
         ."<div class='carrousel'>"
         . '<button class="carrousel__x">X<button>'              //Bouton de fermeture
-        . '<figure class="carrousel__figure"></figure>'         //Conteneur d'images
-        . '<form class="carrousel__form"></form>'               //Ceci intègre du contenu dans la boite
+        . '<figure class="carrousel__figure"></figure>'         //Conteneur d'images a remplir par JS
+        . '<form class="carrousel__form__rad"></form>'               //Ceci intègre du contenu dans la boite
         . '</div> <!-- fin class="carrousel" -->';
     return $contenu;
 

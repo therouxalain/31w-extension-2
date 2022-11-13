@@ -1,3 +1,5 @@
+// Ce fichier est sur-commenté à des fins pédagogiques. 
+
 .monBouton,
 input[type="button"],
 input[type="reset"],
@@ -29,15 +31,15 @@ input[type="submit"] {
   height: 50vh;
   left: 25vw;
   top: 25vh;
-  transform: scale(0);
-  opacity: 0;
+  transform: scale(0);    //Carrousel par défaut sera invisible au départ
+  opacity: 0;                           
   transition: transform 0.5s, opacity 0.5s;
   background-color: red ;
   z-index: 1;
   overflow: hidden;
 }
 
-.carrousel--ouvrir {
+.carrousel--ouvrir {    
   transform: scale(1);
   opacity: 1;
 }

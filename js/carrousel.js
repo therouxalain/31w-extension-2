@@ -1,17 +1,25 @@
+// Ce fichier est sur-commenté à des fins pédagogiques. 
+
 (function(){
-    console.log("carrousel") //Vérifié OK
+    //console.log("carrousel") Vérifié OK
     let elmGalerie = document.querySelector(".galerie")
+    //console.log(elmGalerie);  Vérifié OK j'ai ma galerie
     let elmGalerieImg = document.querySelectorAll(".galerie img")
-    let elmBouton = document.querySelector('.monBouton')
+    // console.log(elmGalerieImg);  Vérifié OK (va chercher chaque image)
     let elmCarrousel = document.querySelector('.carrousel')
+    let elmCarrousel__figure = document.querySelector('.carrousel__figure')
+
+    let elmBouton = document.querySelector('.monBouton')
     let elmCarrousel__x = document.querySelector('.carrousel__x')
 
     elmBouton.addEventListener('mousedown', function(){
-        console.log("ouverture du carrousel")   //Vérifié OK
         elmCarrousel.classList.add('carrousel--ouvrir')
-        for (const elmImg of elmGalerieImg){
-            console.log(elmImg.getAttribute('src'))
 
+        for (const elmImg of elmGalerieImg){
+            let elmImg = document.createElement('img')
+            elmImg.classList.add('carrousel__figure__img')
+            elmImg.setAttribute('src', img.getAttribute('src'))
+            elmCarrousel__figure.appendChild(elmImg)
         }
 
     })
