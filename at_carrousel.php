@@ -1,13 +1,7 @@
 <?php
 
 /**
- * @package igc31w
- */
-
-/**
- * at_carrousel
- * 
- * @package              igc31w
+ * @package              at_Carrousel
  * @author               Alain Théroux
  * @copyright            2022 Alain Théroux
  * @license              GPL v2 or later
@@ -15,41 +9,54 @@
  * @wordpress-plugin
  * 
  * Plugin Name:          at_carrousel
- * Plugin URI:           https://github.com/therouxalain/31w_alain/
- * Description:         Permet d'afficher une boite modale de l'image sélectionné d'une galerie
- * Version:              1.0.0
- * Requires at least:    5.2
- * Requires PHP:         7.2
+ * Plugin URI:           https://github.com/therouxalain/31w_alain/tree/exer1 & https://github.com/therouxalain/31w-extension-2
+ * Description:         Permet d'afficher une boîte modale de l'image sélectionnée d'une galerie. Pour ensuite accéder à toutes les images de la galerie
  * Author:               Alain Théroux
  * Author URI:           https://github.com/therouxalain/
- * Text Domain:          31w_extension
- * License:              GPL v2 or later
- * License URI:          https://www.gnu.org/licenses/gpl-2.0.html
- * Update URI:
  */
+
+
+//////////////////////////////////// PREMIÈRE PARTIE – ENQUEUE
 
 
 function at_enqueue()
 {
+    //s'assurer d'avoir la bonne version de CSS et JS
+    $version_css = filemtime(plugin_dir_path(__FILE__) . "style.css");          //Fichier qui sera créé par SASS à la racine
+    $version_js = filemtime(plugin_dir_path(__FILE__) . "js/carrousel.js");     //Nom de dossier doit être donné pour dépot sans /js
 
-    $version_css = filemtime(plugin_dir_path(__FILE__) . "style.css");
-    $version_js = filemtime(plugin_dir_path(__FILE__) . "js/carrousel.js");
+    // var_dump(__FILE__); Vérif OK
 
-    wp_enqueue_style('at_carrousel', plugin_dir_url(__FILE__) . "style.css", array(), $version_css, false);
-    wp_enqueue_script('at_carrousel_js', plugin_dir_url(__FILE__) . "js/carrousel.js", array(), $version_js, true);
+    wp_enqueue_style(
+        'at_carrousel_css',        ////////////CSS
+        plugin_dir_url(__FILE__) . "style.css",
+        array(),
+        $version_css,
+        false);
+
+    wp_enqueue_script(
+        'at_carrousel_js',         //////////////////JS
+        plugin_dir_url(__FILE__) . "js/carrousel.js",
+        array(),
+        $version_js,
+        true);           //TRUE pour que le script soit placé à la fin du html [vérifié: OK]
+                
 }
+add_action("wp_enqueue_scripts", "at_enqueue");  //Le hook permet d'initialiser le plugin et la f. de rappel
 
-add_action("wp_enqueue_scripts", "at_enqueue");
+//////////////////////////////////// SECONDE PARTIE – LE CARROUSEL
 
-function at_boite_carrousel()
+function boite_carrousel()
 {
-    // Le conteneur d'une boîte
-    $contenu = "<section class='carrousel'>"
-        . '<button class="carrousel__x">X</button>'
-        . '<figure class="carrousel__figure"></figure>'
-        . '<form class="carrousel__form" action=""></form>'
-        . '</section> <!-- fin class="carrousel" -->';
+    // Le conteneur d'une boîte (HTML)
 
+    $contenu =
+        "<button class='monBouton'>Ouvrir carrousel</button>"
+        . "<div class='carrousel'>"
+        . '<button class="carrousel__x">X<button>'
+        . '<figure class="carrousel__figure"></figure>'
+        . '<form class="carrousel__form"></form>'   //Ceci inègre du contenur dans la boite
+        . '</div> <!-- fin class="carrousel" -->';
     return $contenu;
 }
-add_shortcode('at_carrousel', 'at_boite_carrousel');
+add_shortcode('at_carrousel', 'boite_carrousel');

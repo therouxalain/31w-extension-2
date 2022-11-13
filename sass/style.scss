@@ -1,15 +1,38 @@
+.monBouton,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	border: 2px solid;
+	border-color: $color__border-button;
+	border-radius: 7px;
+	background: $color__background-button;
+	color: rgba(0, 0, 0, 0.8);
+	line-height: 2;
+	padding: 0.2em 0.5em 0.2em;
+	text-decoration: none;
+
+	&:hover {
+		border-color: $color__border-button-hover;
+	}
+
+	&:active,
+	&:focus {
+		border-color: $color__border-button-focus;
+	}
+}
+
 .carrousel {
-  position: absolute;
+  position: absolute;   //Car on affiche par devant la page
   display: flex;
   justify-content: center;
-  left: 25vw;
-  top: 25vh;
   width: 50vw;
   height: 50vh;
+  left: 25vw;
+  top: 25vh;
   transform: scale(0);
   opacity: 0;
   transition: transform 0.5s, opacity 0.5s;
-  background-color: beige;
+  background-color: red ;
   z-index: 1;
   overflow: hidden;
 }
